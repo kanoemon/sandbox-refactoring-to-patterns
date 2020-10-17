@@ -7,40 +7,22 @@ namespace App;
  */
 class Parser
 {
-
-    /**
-     * @var bool
-     */
-    private $shouldDecode = false;
-
-    /**
-     * @var boolean
-     */
-    private $shouldRemoveEscapeCharacters = false;
-
-    public function setNodeDecoding(bool $shouldDecode): void
-    {
-        $this->shouldDecode = $shouldDecode;
-    }
-
-    public function setRemoveEscapeCharacters(bool $shouldRemoveEscapeCharacters): void
-    {
-        $this->shouldRemoveEscapeCharacters = $shouldRemoveEscapeCharacters;
-    }
+    private $nodeFactory;
 
     public function parse(string $string): array
     {
         $stringParser = new StringParser();
-        return $stringParser->findString($this, $string, 1, 1);
+        $stringNode = $stringParser->findString($this, $string, 1, 1);
+        return $stringNode->getNode();
     }
 
-    public function shouldDecodeNodes(): bool
+    public function getNodeFactory(): NodeFactory
     {
-        return $this->shouldDecode;
+        return $this->nodeFactory;
     }
 
-    public function shouldRemoveEscapeCharacters(): bool
+    public function setNodeFactory(NodeFactory $factory): void
     {
-        return $this->shouldRemoveEscapeCharacters;
+        $this->nodeFactory = $factory;
     }
 }

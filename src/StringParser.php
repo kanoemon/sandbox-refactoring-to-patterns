@@ -7,15 +7,12 @@ namespace App;
  */
 class StringParser
 {
-    public function findString(Parser $parser, string $textBuffer, int $textBegin, int $textEnd): array
+    public function findString(Parser $parser, string $textBuffer, int $textBegin, int $textEnd): StringNode
     {
-        $stringNode = StringNode::createStringNode(
+        return $parser->getNodeFactory()->createStringNode(
             $textBuffer,
             $textBegin,
-            $textEnd,
-            $parser->shouldDecodeNodes(),
-            $parser->shouldRemoveEscapeCharacters()
+            $textEnd
         );
-        return $stringNode->getNode();
     }
 }

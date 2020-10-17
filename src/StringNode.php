@@ -20,11 +20,6 @@ class StringNode
         $this->decode($textBuffer, $textBegin, $textEnd, $shouldDecode, $shouldRemoveEscapeCharacters);
     }
 
-    public static function createStringNode(string $textBuffer, int $textBegin, int $textEnd, bool $shouldDecode, bool $shouldRemoveEscapeCharacters): StringNode
-    {
-        return new StringNode($textBuffer, $textBegin, $textEnd, $shouldDecode, $shouldRemoveEscapeCharacters);
-    }
-
     private function decode(string $textBuffer, int $textBegin, int $textEnd, bool $shouldDecode, bool $shouldRemoveEscapeCharacters): void
     {
         $xml = simplexml_import_dom($this->dom);
