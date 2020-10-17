@@ -2,6 +2,9 @@
 
 namespace App;
 
+/**
+ * パースするクラス
+ */
 class Parser
 {
 
@@ -23,6 +26,12 @@ class Parser
     public function setRemoveEscapeCharacters(bool $shouldRemoveEscapeCharacters): void
     {
         $this->shouldRemoveEscapeCharacters = $shouldRemoveEscapeCharacters;
+    }
+
+    public function parse(string $string): array
+    {
+        $stringParser = new StringParser();
+        return $stringParser->findString($this, $string, 1, 1);
     }
 
     public function shouldDecodeNodes(): bool

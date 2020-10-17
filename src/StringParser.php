@@ -2,12 +2,13 @@
 
 namespace App;
 
+/**
+ * 文字列をパースするクラス
+ */
 class StringParser
 {
-    public function run(string $textBuffer, int $textBegin, int $textEnd): string
+    public function findString(Parser $parser, string $textBuffer, int $textBegin, int $textEnd): array
     {
-        $parser = new Parser();
-
         $stringNode = StringNode::createStringNode(
             $textBuffer,
             $textBegin,
@@ -15,7 +16,6 @@ class StringParser
             $parser->shouldDecodeNodes(),
             $parser->shouldRemoveEscapeCharacters()
         );
-
-        return $textBuffer;
+        return $stringNode->getNode();
     }
 }
