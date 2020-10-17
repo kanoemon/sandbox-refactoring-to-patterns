@@ -1,0 +1,16 @@
+{
+    "name": "root/sandbox-refactoring-to-patterns",
+    "authors": [
+        {
+            "name": "kanoemon",
+            "email": "kanoemon.cho@gmail.com"
+        }
+    ],
+    "autoload": {
+        "classmap": ["src/"]
+    },
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^7.5"
+    }
+}
