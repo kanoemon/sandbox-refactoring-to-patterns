@@ -1,15 +1,14 @@
 <?php
 
-namespace Tests\HtmlParserTest;
+namespace Tests;
 
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
 
 use PHPUnit\Framework\TestCase;
-use App\Parser;
 use App\Decode\Decode;
 use App\Decode\NodeFactory;
 
-class DecodingParserTest extends TestCase
+class DecodingTest extends TestCase
 {
     private $nodeFactory;
 
