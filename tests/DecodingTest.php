@@ -2,8 +2,6 @@
 
 namespace Tests;
 
-require_once dirname(__FILE__) . '/../vendor/autoload.php';
-
 use PHPUnit\Framework\TestCase;
 use App\Decode\Decode;
 use App\Decode\NodeFactory;
