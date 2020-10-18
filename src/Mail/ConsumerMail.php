@@ -2,26 +2,14 @@
 
 namespace App\Mail;
 
-class ConsumerMail
+class ConsumerMail extends AbstractMail
 {
-    private $testFlg;
-
     private $autoReplyFlg;
 
-    public function __construct(bool $testFlg, bool $autoReplyFlg)
+    protected function __construct(bool $testFlg, bool $autoReplyFlg)
     {
         $this->testFlg = $testFlg;
         $this->autoReplyFlg = $autoReplyFlg;
-    }
-
-    public function send(): bool
-    {
-        return true;
-    }
-
-    public function testFlg(): bool
-    {
-        return $this->testFlg;
     }
 
     public function autoReplyFlg(): bool

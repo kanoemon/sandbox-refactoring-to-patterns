@@ -2,22 +2,10 @@
 
 namespace App\Mail;
 
-class SystemMail
+class SystemMail extends AbstractMail
 {
-    private $testFlg;
-
-    public function __construct(bool $testFlg)
+    protected function __construct(bool $testFlg)
     {
         $this->testFlg = $testFlg;
-    }
-
-    public function send(): bool
-    {
-        return true;
-    }
-
-    public function testFlg(): bool
-    {
-        return $this->testFlg;
     }
 }
