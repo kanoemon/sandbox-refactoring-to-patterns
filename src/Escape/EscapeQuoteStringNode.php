@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Decode;
+namespace App\Escape;
 
-class DecodingStringNode
+class EscapeQuoteStringNode
 {
     private $stringNode;
 
@@ -13,7 +13,7 @@ class DecodingStringNode
 
     public function createStringNode(): StringNode
     {
-        $string = htmlspecialchars($this->stringNode->toString(), ENT_NOQUOTES);
+        $string = htmlspecialchars($this->stringNode->toString());
         return new StringNode($string);
     }
 }

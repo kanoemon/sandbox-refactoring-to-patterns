@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Decode;
+namespace App\Escape;
 
-class Decode
+class Escape
 {
     private $nodeFactory;
 
@@ -11,10 +11,10 @@ class Decode
         $this->nodeFactory = $nodeFactory;
     }
 
-    public function decode(string $string): string
+    public function escape(string $string): string
     {
-        $stringDecorder = new StringDecoder($this->nodeFactory);
-        $stringNode = $stringDecorder->find($string);
+        $stringEscape = new StringEscape($this->nodeFactory);
+        $stringNode = $stringEscape->find($string);
         return $stringNode->toString();
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Decode;
+namespace App\Escape;
 
-class BrToNlStringNode
+class EscapeStringNode
 {
     private $stringNode;
 
@@ -13,7 +13,7 @@ class BrToNlStringNode
 
     public function createStringNode(): StringNode
     {
-        $string = str_replace('<br>', '\n', $this->stringNode->toString());
+        $string = htmlspecialchars($this->stringNode->toString(), ENT_NOQUOTES);
         return new StringNode($string);
     }
 }

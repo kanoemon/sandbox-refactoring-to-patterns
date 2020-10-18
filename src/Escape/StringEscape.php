@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Decode;
+namespace App\Escape;
 
-class StringDecoder
+class StringEscape
 {
     private $nodeFactory;
 
