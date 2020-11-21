@@ -7,7 +7,12 @@ abstract class CapitalStrategy
     const MILLIS_PER_DAY = 1000*60*60*24;
     const DAYS_PER_YEAR = 365;
 
-    abstract public function capital(Loan $loan): float;
+    public function capital(Loan $loan): float
+    {
+        return $this->riskAmountFor($loan) * $this->duration($loan) * $this->riskFactorFor($loan);
+    }
+
+    abstract protected function riskAmountFor(Loan $loan): float;
 
     public function duration(Loan $loan): float
     {

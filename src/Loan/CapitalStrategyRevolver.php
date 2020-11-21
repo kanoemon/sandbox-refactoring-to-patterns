@@ -6,7 +6,16 @@ class CapitalStrategyRevolver extends CapitalStrategy
 {
     public function capital(Loan $loan): float
     {
-        return ($loan->outstandingRiskAmount() * $this->duration($loan) * $this->riskFactorFor($loan))
-        + ($loan->unusedRiskAmount() * $this->duration($loan) * $this->unusedRiskFactorFor($loan));
+        return parent::capital($loan) + $this->unusedCapital($loan);
+    }
+
+    protected function riskAmountFor(Loan $loan): float
+    {
+        return $loan->outstandingRiskAmount();
+    }
+
+    private function unusedCapital(Loan $loan): float
+    {
+        return $loan->unusedRiskAmount() * $this->duration($loan) * $this->unusedRiskFactorFor($loan);
     }
 }
