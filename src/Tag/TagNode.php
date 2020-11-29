@@ -54,12 +54,37 @@ class TagNode
     public function toString(): string
     {
         $result = '';
-        $result .= "<{$this->name}{$this->attributes}>";
-        foreach($this->children as $child) {
-            $result .= $child->toString();
-        }
-        $result .= $this->value;
-        $result .= "</{$this->name}>";
+        $this->appendContentsTo($result);
         return $result;
+    }
+
+    public function appendContentsTo(string &$result)
+    {
+        $this->writeOpenTagTo($result);
+        $this->writeChildrenTo($result);
+        $this->writeValueTo($result);
+        $this->writeEndTo($result);
+    }
+
+    private function writeOpenTagTo(string &$result): void
+    {
+        $result .= "<{$this->name}{$this->attributes}>";
+    }
+    
+    private function writeChildrenTo(string &$result): void
+    {
+        foreach($this->children as $child) {
+            $child->appendContentsTo($result);
+        }
+    }
+
+    private function writeValueTo(string &$result): void
+    {
+        $result .= $this->value;
+    }
+
+    private function writeEndTo(string &$result): void
+    {
+        $result .= "</{$this->name}>";
     }
 }
